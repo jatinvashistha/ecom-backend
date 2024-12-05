@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed QR Code with Dynamic Redirect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .qr-code-container {
+            text-align: center;
+        }
+
+        #qrCodeImg {
+            margin: 20px;
+            width: 200px;
+            height: 200px;
+        }
+
+        .input-container {
+            margin-top: 20px;
+        }
+
+        .input-container input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+        }
+
+        .input-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .input-container button:hover {
+            background-color: #45a049;
+        }
+
+        .download-btn {
+            background-color: #008CBA;
+        }
+
+        .download-btn:hover {
+            background-color: #007BB5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="qr-code-container">
+        <h1>QR Code with Fixed Redirect</h1>
+        <!-- QR Code Image -->
+        <img id="qrCodeImg"
+            src="https://firebasestorage.googleapis.com/v0/b/digitalcloudstorage0.appspot.com/o/qr-code.png?alt=media&token=1442fff9-e2ee-44e0-8627-3336086c0660"
+            alt="Fixed QR Code">
+
+        <div class="input-container">
+            <input type="text" id="linkInput"
+                placeholder="Enter new target URL for the fixed QR code redirect (Optional)">
+            <button onclick="updateTarget()">Update Redirect</button>
+            <button class="download-btn" onclick="downloadQRCode()">Download QR Code</button>
+        </div>
+    </div>
+
+    <script>
+        // Default short URL
+        let fixedShortUrl = "https://bit.ly/my-fixed-qr-link"; // Example short link
+
+        // Function to update the target URL for the fixed short link
+        function updateTarget() {
+            const newTarget = document.getElementById("linkInput").value;
+            if (newTarget) {
+                alert(`Update the target URL for the fixed QR link to: ${newTarget}`);
+                // Here you'd need to manually update the target URL for the short link in the redirection service like Bitly.
+                // This step depends on how you're managing the short URL.
+            } else {
+                alert("Please enter a valid URL");
+            }
+        }
+
+        // Function to download the QR code image
+        function downloadQRCode() {
+            const link = document.createElement("a");
+            link.href = document.getElementById("qrCodeImg").src;
+            link.download = "qr-code.png";
+            link.click();
+        }
+    </script>
+
+</body>
+
+</html>
