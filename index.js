@@ -27,7 +27,7 @@ app.use("/api/admin", require("./Routes/adminRoutes.js"));
 
 // Root Route
 app.get("/", (req, res) => {
-  res.status(200).json({ message: "BBHK server is running" });
+  res.status(200).json({ message: "Ecom server is running" });
 });
 
 
